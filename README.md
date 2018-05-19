@@ -18,8 +18,12 @@ $i("#clearBtn").click( function(){
     $i("#user-form").clearForm();
 });
 
-// dataBind makes it simple to populate forms or ui elements with a json object
-// maps simple name value paired objects by id 
+// dataBind makes it simple to populate forms or ui elements with a json object.
+// dataBind maps simple name value paired objects by id 
+// <input type="text" name="first_name" id="first_name">
+// <input type="text" name="last_name" id="last_name">
+// <input type="checkbox" name="active" value="Y" id="active">
+
 $i("#user-form").dataBind( {first_name:'Mark',last_name:'Higbee',active:'Y',gender:'M'}  );
 
 // get ajax call works like butter combine with dataBind 
