@@ -26,7 +26,7 @@ $i("#clearBtn").click( function(){
 
 $i("#user-form").dataBind( {first_name:'Mark',last_name:'Higbee',active:'Y',gender:'M'}  );
 
-// get ajax call works like butter combine with dataBind 
+// the get ajax call works like butter, combine with dataBind or renderTemplate 
 $i.get("?cmd=getSomeData",function(data){
     var result = JSON.parse( data );
     
@@ -46,5 +46,31 @@ $i.getJSON("?cmd=getSomeData",function(data){
  });
 
 </script>
+
+```
+
+## Templates
+Templates uses mustache merge tags 
+
+```
+<script id="contactTemplate" type="text/template">
+<p>contactid: {{contactid}}</p>
+<p>first name: {{firstName}}</p>
+</script>
+
+<script>
+
+// getJSON ajax call works like butter and converts the text to json for you. 
+$i.getJSON("?cmd=getSomeData",function(data){
+
+    if( result.status == "Success"){
+       var html = $i("#contactTemplate").renderTemplate(data);
+    }
+    else{ alert("error getting some Data");
+ });
+
+</script>
+
+<div id="contactView"></div>
 
 ```
