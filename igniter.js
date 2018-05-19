@@ -62,6 +62,7 @@ AjaxClient.prototype.post = function( url, content, callback )
 };
 function Igniter( selector )
 {
+        //inherit from AjaxClient so we can make ajax calls
         AjaxClient.call(this);
         this.selector = selector;
 }
@@ -102,7 +103,9 @@ Igniter.prototype.show = function()
         {
                 matches[i].style.display = 'block';
         }
-};gniter.prototype.toggle = function()
+};
+
+Igniter.prototype.toggle = function()
 { 
 
         var target = this.selector;
@@ -298,7 +301,7 @@ Igniter.prototype.clearForm = function()
                 }
         }
 }
-/ got this from devloper.mozilla.org
+// got this from devloper.mozilla.org
 // <form action="" method="post" onsubmit="$i(this).ajaxSubmit(callback); return false;">
 //      OR 
 //      $i("#submitbutton").click(function(){ 
@@ -348,6 +351,7 @@ if (oFormElement.action === undefined) { return; }
  return false;
 };
 
+//Don't mess with Jquery's $ 
 var $i = function( selector ){ return new Igniter( selector ) };
 
 // alias non selector calls so you don't have to call them with $i().get
