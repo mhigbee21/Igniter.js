@@ -74,8 +74,7 @@ AjaxClient.prototype.setDebug = function(debug)
 function Igniter( selector )
 {
 	this.selector = selector;
-	AjaxClient.call(this);
-	
+	AjaxClient.call(this);	
 }
 
 Igniter.prototype = Object.create(AjaxClient.prototype);
@@ -84,6 +83,7 @@ Igniter.prototype.constructor = Igniter;
 Igniter.prototype.hide = function()
 {
 	var target = this.selector;
+	
 	if( target.match(/^#/) )
         {
                 var element = document.querySelector(target);
@@ -119,7 +119,6 @@ Igniter.prototype.show = function()
 
 Igniter.prototype.toggle = function()
 {      
-
 	var target = this.selector;
  
         if( target.match(/^#/) )
