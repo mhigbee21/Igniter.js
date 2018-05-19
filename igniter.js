@@ -188,6 +188,40 @@ Igniter.prototype.attr = function( name, value )
         }
 };
 
+gniter.prototype.html = function( html )
+{       
+        var target = this.selector;
+        
+        if( target.match(/^#/) )
+        {       
+                document.querySelector(target).innerHTML = html;
+                return;
+        }
+        
+        var matches = document.querySelectorAll(target);
+        for(var i =0; i < matches.length; i++ )
+        {       
+                matches[i].innerHTML = html;
+        }
+};
+
+Igniter.prototype.append = function( html )
+{       
+        var target = this.selector;
+        
+        if( target.match(/^#/) )
+        {       
+                document.querySelector(target).innerHTML += html;
+                return;
+        }
+
+        var matches = document.querySelectorAll(target);
+        for(var i =0; i < matches.length; i++ )
+        {
+                matches[i].innerHTML += html;
+        }
+};
+
 Igniter.prototype.click = function( callback )
 {
 	var target = this.selector;
