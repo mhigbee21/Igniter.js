@@ -44,6 +44,7 @@ AjaxClient.prototype.getJSON = function( url, callback )
 
         oReq.send();
 };
+
 AjaxClient.prototype.post = function( url, content, callback )
 {
         var self = this;
@@ -64,46 +65,52 @@ AjaxClient.prototype.post = function( url, content, callback )
 
         oReq.send(content);
 };
+
+AjaxClient.prototype.setDebug = function(debug)
+{
+	AjaxClient.prototype.debug = debug;
+};
+
 function Igniter( selector )
 {
-        //inherit from AjaxClient so we can make ajax calls
-        AjaxClient.call(this);
-        this.selector = selector;
+	this.selector = selector;
+	AjaxClient.call(this);
+	
 }
+
 Igniter.prototype = Object.create(AjaxClient.prototype);
-Igniter.prototype.constructor = Igniter;
-Igniter.prototype.debug = false;
+Igniter.prototype.constructor = Igniter;   
 
 Igniter.prototype.hide = function()
 {
-        var target = this.selector;
-        if( target.match(/^#/) )
+	var target = this.selector;
+	if( target.match(/^#/) )
         {
                 var element = document.querySelector(target);
                 element.style.display = 'none';
                 return;
         }
 
-        var matches = document.querySelectorAll(target);
-
-        for(var i =0; i < matches.length; i++ )
-        {
-                matches[i].style.display = 'none';
-        }
+	var matches = document.querySelectorAll(target);
+	
+	for(var i =0; i < matches.length; i++ )
+	{
+		matches[i].style.display = 'none';
+	}
 };
 
 Igniter.prototype.show = function()
 {
-        var target = this.selector;
+	var target = this.selector;
 
-        if( target.match(/^#/) )
-        {
-                var element = document.querySelector(target);
-                element.style.display = 'block';
-                return;
-        }
+	if( target.match(/^#/) )
+	{
+		var element = document.querySelector(target);
+		element.style.display = 'block';
+		return;
+	}
 
-        var matches = document.querySelectorAll(target);
+        var matches = document.querySelectorAll(target);       
         for(var i =0; i < matches.length; i++ )
         {
                 matches[i].style.display = 'block';
@@ -111,30 +118,30 @@ Igniter.prototype.show = function()
 };
 
 Igniter.prototype.toggle = function()
-{ 
+{      
 
-        var target = this.selector;
-
+	var target = this.selector;
+ 
         if( target.match(/^#/) )
-        {
+        {       
                 var element = document.querySelector(target);
-
-                if( element.style.display == 'none' )
-                {
-                         element.style.display = 'block';
-                }
-                else
-                {
-                        element.style.display = 'none';
-                }
-
-                return;
+                
+		if( element.style.display == 'none' )
+		{
+			 element.style.display = 'block';
+		}
+		else
+		{
+			element.style.display = 'none';
+		}
+                
+		return;
         }
-
+        
         var matches = document.querySelectorAll(target);
         for(var i =0; i < matches.length; i++ )
-        {
-                if( matches[i].style.display == 'none' )
+        {       
+		if( matches[i].style.display == 'none' )
                 {
                          matches[i].style.display  = 'block';
                 }
@@ -142,12 +149,12 @@ Igniter.prototype.toggle = function()
                 {
                         matches[i].style.display = 'none';
                 }
-        }
+	}
 };
 
 Igniter.prototype.css = function( prop, value )
-{ 
-        var target = this.selector;
+{	
+	var target = this.selector;
 
         if( target.match(/^#/) )
         {
@@ -165,9 +172,9 @@ Igniter.prototype.css = function( prop, value )
 
 Igniter.prototype.attr = function( name, value )
 {
-        var target = this.selector;
-
-        if( target.match(/^#/) )
+	var target = this.selector;
+	
+	if( target.match(/^#/) )
         {
                 var element = document.querySelector(target);
                 element.setAttribute(name, value);
@@ -183,15 +190,15 @@ Igniter.prototype.attr = function( name, value )
 
 Igniter.prototype.click = function( callback )
 {
-        var target = this.selector;
+	var target = this.selector;
 
-        if( target.match(/^#/) )
+	if( target.match(/^#/) )
         {
                 document.querySelector(target).addEventListener("click", callback);
                 return;
         }
 
-        var matches = document.querySelectorAll(target);
+	var matches = document.querySelectorAll(target);
         for(var i =0; i < matches.length; i++ )
         {
                 matches[i].addEventListener("click", callback);
@@ -234,31 +241,31 @@ Igniter.prototype.renderTemplate = function ( templateid, hash )
 // binds to elements with same id as name
 Igniter.prototype.dataBind = function ( data )
 {
-        var target = this.selector;
-        if( !target ){ target = document; }
-        else{ target = document.querySelector(target); }
-
-        if( !target ){ target = document; }
+	var target = this.selector;
+	if( !target ){ target = document; }
+	else{ target = document.querySelector(target); }	
+	
+	if( !target ){ target = document; }
 
         for( var name in data )
         {
                 if( target.querySelector("#"+name).type === 'checkbox' )
                 {
-                        var checkbox = target.querySelector("#"+name);
+			var checkbox = target.querySelector("#"+name);
                         var curr = checkbox.value;
 
                         if( curr == data[name] )
                         {
                                  checkbox.checked = true;
                         }
-
-                }
+	                
+		}
                 else
                 {
-                        target.querySelector("#"+name).value = data[name];
+			target.querySelector("#"+name).value = data[name];
                 }
         }
-};
+}
 
 Igniter.prototype.openWindow = function( WinName, width, height)
 {
@@ -274,8 +281,8 @@ Igniter.prototype.serialize = function( obj ) {
 
 Igniter.prototype.clearForm = function()
 {
-        var target = this.selector;
-        var frm = document.querySelector(target);
+	var target = this.selector;
+	var frm = document.querySelector(target);
 
         for (i = 0; i < frm.elements.length; i++)
         {
@@ -306,26 +313,27 @@ Igniter.prototype.clearForm = function()
                 }
         }
 }
+
 // got this from devloper.mozilla.org
 // <form action="" method="post" onsubmit="$i(this).ajaxSubmit(callback); return false;">
-//      OR 
-//      $i("#submitbutton").click(function(){ 
-//              $i("#formId").ajaxSubmit(callback);     
-//      });
+// 	OR 
+//	$i("#submitbutton").click(function(){ 
+//		$i("#formId").ajaxSubmit(callback);	
+//	});
 //
 Igniter.prototype.ajaxSubmit = function(callback) {
 
-        var target = this.selector;
-        var oFormElement;
+	var target = this.selector;
+	var oFormElement;	
 
-        if( typeof target === 'string' )
-        {
-                oFormElement = document.querySelector(target);
-        }
-        else
-        {
-                oFormElement = target;
-        }
+	if( typeof target === 'string' )
+	{
+		oFormElement = document.querySelector(target);
+	}
+	else
+	{
+		oFormElement = target;
+	}
 
 if (oFormElement.action === undefined) { return; }
   var oReq = new XMLHttpRequest();
@@ -354,19 +362,15 @@ if (oFormElement.action === undefined) { return; }
     oReq.send(null);
   }
  return false;
-};
+}
 
-//Don't mess with Jquery's $ 
+
 var $i = function( selector ){ return new Igniter( selector ) };
-
+		
 // alias non selector calls so you don't have to call them with $i().get
 $i.get = function( url, callback ) { return $i().get( url, callback )};
 $i.getJSON = function( url, callback ) { return $i().getJSON( url, callback )};
 $i.post = function( url, content, callback ) { return $i().post( url, content, callback )};
-$i.openWindow = function( WinName, width, height ){ return $i().openWindow( WinName, width, height )};
+$i.openWindow = function( WinName, width, height ){ return $i().openWindow( WinName, width, height )}; 
 $i.serialize = function( obj ){ return $i().serialize( obj )};
-
-
-
-
-
+$i.setDebug = function(debug) {return $i().setDebug( debug )};
