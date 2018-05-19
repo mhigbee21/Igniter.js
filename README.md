@@ -73,6 +73,7 @@ $i.getJSON("?cmd=getContact",function(data){
 </script>
 
 <div id="contactView"></div>
+```
 
 ## Forms
 Send forms really easy with ajaxSubmit
