@@ -1,19 +1,21 @@
 function AjaxClient(){}
 AjaxClient.prototype.async = true;
 AjaxClient.prototype.timeout = 3000; // time in milliseconds
+AjaxClient.prototype.debug = false;
 
 AjaxClient.prototype.get = function( url, callback )
 {
+        var self = this;
         var oReq = new XMLHttpRequest();
         oReq.timeout = this.timeout;
         oReq.open("get", url, this.async );
-
+       
         oReq.onload = function () {
                 if (oReq.readyState === oReq.DONE)
                 {
                         if (oReq.status === 200)
                         {
-                                console.log(oReq.responseText);
+                                if( self.debug ) { console.log(oReq.responseText) };
                                 callback( oReq.responseText );
                         }
                 }
@@ -24,6 +26,7 @@ AjaxClient.prototype.get = function( url, callback )
 
 AjaxClient.prototype.getJSON = function( url, callback )
 {
+        var self = this;
         var oReq = new XMLHttpRequest();
         oReq.timeout = this.timeout;
         oReq.open("get", url, this.async );
@@ -33,7 +36,7 @@ AjaxClient.prototype.getJSON = function( url, callback )
                 {
                         if (oReq.status === 200)
                         {
-                                console.log(oReq.responseText);
+                                if( self.debug ) { console.log(oReq.responseText) };
                                 callback(JSON.parse(oReq.responseText));
                         }
                 }
@@ -43,6 +46,7 @@ AjaxClient.prototype.getJSON = function( url, callback )
 };
 AjaxClient.prototype.post = function( url, content, callback )
 {
+        var self = this;
         var oReq = new XMLHttpRequest();
         oReq.timeout = this.timeout;
         oReq.open("post", url, this.async );
@@ -52,7 +56,7 @@ AjaxClient.prototype.post = function( url, content, callback )
                 {
                         if (oReq.status === 200)
                         {
-                                console.log(oReq.responseText);
+                                if( self.debug ) { console.log(oReq.responseText) };
                                 callback(JSON.parse(oReq.responseText));
                         }
                 }
@@ -68,6 +72,7 @@ function Igniter( selector )
 }
 Igniter.prototype = Object.create(AjaxClient.prototype);
 Igniter.prototype.constructor = Igniter;
+Igniter.prototype.debug = false;
 
 Igniter.prototype.hide = function()
 {
