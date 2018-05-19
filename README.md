@@ -60,11 +60,12 @@ Templates uses mustache merge tags
 
 <script>
 
-// getJSON ajax call works like butter and converts the text to json for you. 
-$i.getJSON("?cmd=getSomeData",function(data){
+// get a contact...
+$i.getJSON("?cmd=getContact",function(data){
 
     if( result.status == "Success"){
        var html = $i("#contactTemplate").renderTemplate(data);
+       $i("#contactView").html( html );
     }
     else{ alert("error getting some Data");
  });
