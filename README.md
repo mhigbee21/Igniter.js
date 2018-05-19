@@ -7,26 +7,26 @@ Igniter.js gives you the power to get thing done in a very small package... Just
 
 <script>
 
-  //event listeners are simple replace click with the listener you need
+  Event listeners are simple replace click with the listener you need
   $i("#toggleBtn").listen("click", function(){    
       $i("#div").toggle();
   });
 
-// you could use the method listen like the above example, clicks events are used so much, 
-// I made an event listener just for click
+You could use the method listen like the above example, clicks events are used so much, 
+ I made an event listener just for click
 $i("#clearBtn").click( function(){     
     $i("#user-form").clearForm();
 });
 
-// dataBind makes it simple to populate forms or ui elements with a json object.
-// dataBind maps simple name value paired objects by id 
-// <input type="text" name="first_name" id="first_name">
-// <input type="text" name="last_name" id="last_name">
-// <input type="checkbox" name="active" value="Y" id="active">
+dataBind makes it simple to populate forms or ui elements with a json object.
+dataBind maps simple name value paired objects by id 
+<input type="text" name="first_name" id="first_name">
+<input type="text" name="last_name" id="last_name">
+<input type="checkbox" name="active" value="Y" id="active">
 
 $i("#user-form").dataBind( {first_name:'Mark',last_name:'Higbee',active:'Y',gender:'M'}  );
 
-// the get ajax call works like butter, combine with dataBind or renderTemplate 
+The get ajax call works like butter, combine with dataBind or renderTemplate 
 $i.get("?cmd=getSomeData",function(data){
     var result = JSON.parse( data );
     
@@ -36,7 +36,7 @@ $i.get("?cmd=getSomeData",function(data){
     else{ alert("error getting some Data");
  });
 
-// getJSON ajax call works like butter and converts the text to json for you. 
+getJSON ajax call works like butter and converts the text to json for you. 
 $i.getJSON("?cmd=getSomeData",function(data){
     
     if( result.status == "Success"){
