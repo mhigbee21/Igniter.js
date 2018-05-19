@@ -74,4 +74,14 @@ $i.getJSON("?cmd=getContact",function(data){
 
 <div id="contactView"></div>
 
+## Forms
+Send forms really easy with ajaxSubmit
+
+```
+<form action="" method="post" onsubmit="$i(this).ajaxSubmit(callback); return false;">      
+     OR 
+      $i("#submitbutton").click(function(){ 
+              $i("#formId").ajaxSubmit(callback); 
+      });
+
 ```
