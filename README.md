@@ -12,7 +12,7 @@ Igniter.js gives you the power to get thing done in a very small package... Just
       $i("#test").toggle();
   });
 
-// you could use listen like about but click is used so much I made an event listener just for click
+// you could use the method listen like the above example, clicks events are used so much I, made an event listener just for click
 $i("#clearBtn").click( function(){     
     $i("#test-form").clearForm();
 });
