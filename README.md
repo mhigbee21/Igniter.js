@@ -1,6 +1,6 @@
 # Igniter.js
 
-Igniter.js gives you the power to get thing done in a very small package... Just include the file and you're ready to start coding... Igniter.js uses jquery like syntax.
+Igniter.js gives you the power to get thing done in a very small package... Just include the js file and you're ready to start coding... Igniter.js uses jquery like syntax.
 
  ```
 <script src="..js/igniter.js"></script>
