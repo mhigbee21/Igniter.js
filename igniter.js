@@ -106,14 +106,14 @@ Igniter.prototype.show = function()
 	if( target.match(/^#/) )
 	{
 		var element = document.querySelector(target);
-		element.style.display = 'block';
+		element.style.display = 'inline';
 		return;
 	}
 
         var matches = document.querySelectorAll(target);       
         for(var i =0; i < matches.length; i++ )
         {
-                matches[i].style.display = 'block';
+                matches[i].style.display = 'inline';
         }
 };
 
@@ -127,7 +127,7 @@ Igniter.prototype.toggle = function()
                 
 		if( element.style.display == 'none' )
 		{
-			 element.style.display = 'block';
+			 element.style.display = 'inline';
 		}
 		else
 		{
@@ -142,7 +142,7 @@ Igniter.prototype.toggle = function()
         {       
 		if( matches[i].style.display == 'none' )
                 {
-                         matches[i].style.display  = 'block';
+                         matches[i].style.display  = 'inline';
                 }
                 else
                 {
@@ -187,7 +187,7 @@ Igniter.prototype.attr = function( name, value )
         }
 };
 
-gniter.prototype.html = function( html )
+Igniter.prototype.html = function( html )
 {       
         var target = this.selector;
         
