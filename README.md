@@ -94,8 +94,19 @@ Form validation Example:
 </form>
 
 or
-<script>
+
  $i("#submitBtn").click( function(){ $i("#form1").validateForm(); });
-</script>
+
+
+validation with callbacks and ajaxSubmit;
+
+$i("#form1").validateForm(function(data){
+
+              $i("#formId").ajaxSubmit(callback);
+
+       },function(data){
+
+              alert(data.errorMsg);     
+      });
 
 ```
