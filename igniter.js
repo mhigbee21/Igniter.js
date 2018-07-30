@@ -396,8 +396,71 @@ if (oFormElement.action === undefined) { return; }
   }
  return false;
 }
+//-----------------------------------------------------------------------------------------------
+// looks for data attributes...
+// data-required="true" data-error-message="The requried field was empty"
+//
+//   $i("#form1").validateForm(function(data){
+//                        
+//                if( !data.valid )
+//               {               
+//                        alert(data.errorMsg);
+//               }                        
+//        });
+//
+//   <form onsubmit="return $i(this).validateForm();">
+//   <button onclick=return $i("#form1").validateForm();">
+//----------------------------------------------------------------------------------------------
+Igniter.prototype.validateForm = function(callback) {
 
+        var target = this.selector;
+        var frm = document.querySelector(target);
 
+        var errorMsg = '';
+
+        for (var i = 0; i < frm.elements.length; i++)
+        {
+                if( frm.elements[i].dataset.required )
+                {
+                        if( frm.elements[i].value === '' )
+                        {
+                                if( frm.elements[i].dataset.errorMessage )
+                                {
+                                         errorMsg += frm.elements[i].dataset.errorMessage + "\n";
+                                }
+                                else
+                                {
+                                        errorMsg += "The required field " + frm.elements[i].name + " was left empty\n";
+                                }
+                        }
+                }
+        }
+
+        var result = {};
+        result.errorMsg = errorMsg;
+        if( errorMsg )
+        {
+                result.valid = false;
+        }
+        else
+        {
+                result.valid = true;
+        }
+
+        if( callback )
+        {
+                callback(result);
+                return result.valid;
+        }
+
+        if( !result.valid )
+        {
+                alert( errorMsg );
+        }
+	
+	return result.valid;
+};
+	
 var $i = function( selector ){ return new Igniter( selector ) };
 		
 // alias non selector calls so you don't have to call them with $i().get
