@@ -85,4 +85,17 @@ $i("#submitbutton").click(function(){
               $i("#formId").ajaxSubmit(callback); 
 });
 
+
+Form validation Example: 
+
+<form id="form1">
+ Email: <input type="text" name="email" data-required="true" data-error-message="Please enter your email address">
+ <button onclick=return $i("#form1").validateForm();" id="submitBtn">Click</button>
+</form>
+
+or
+<script>
+ $i("#submitBtn").click( function(){ $i("#form1").validateForm(); });
+</script>
+
 ```
