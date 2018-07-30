@@ -1,4 +1,4 @@
-# Igniter.js
+# igniter.js
 
 Igniter.js gives you the power to get thing done in a very small package... The minified version is around 5k! Just include the js file and you're ready to start coding... Igniter.js uses jquery like syntax.
 
