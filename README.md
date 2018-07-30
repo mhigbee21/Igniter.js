@@ -1,6 +1,6 @@
 # igniter.js
 
-igniter.js gives you the power to get thing done in a very small package... The minified version is around 5k! Just include the js file and you're ready to start coding... igniter.js uses jquery like syntax. igniter.js is not a jquery replacement, it is designed to be much smaller than jquery. igniter.js was designed to do most of the things that people use jquery to do in a much smaller package. 
+igniter.js gives you the power to get thing done in a very small package... The minified version is around 5k! Just include the js file and you're ready to start coding... igniter.js uses jquery like syntax. and is much smaller than jquery. igniter.js doest most of the things that people use jquery to do in a much smaller package. 
 
  ```
 <script src="..js/igniter.js"></script>
