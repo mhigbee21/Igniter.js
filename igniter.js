@@ -401,17 +401,19 @@ if (oFormElement.action === undefined) { return; }
 // data-required="true" data-error-message="The requried field was empty"
 //
 //   $i("#form1").validateForm(function(data){
-//                        
-//                if( !data.valid )
-//               {               
-//                        alert(data.errorMsg);
-//               }                        
-//        });
+//      
+//              $i("#formId").ajaxSubmit(callback);
+//
+//       },function(data){
+//
+//              alert(data.errorMsg);
+//     
+//      });
 //
 //   <form onsubmit="return $i(this).validateForm();">
 //   <button onclick=return $i("#form1").validateForm();">
 //----------------------------------------------------------------------------------------------
-Igniter.prototype.validateForm = function(callback) {
+Igniter.prototype.validateForm = function(callback, errorCallback) {
 
         var target = this.selector;
         var frm = document.querySelector(target);
@@ -438,27 +440,17 @@ Igniter.prototype.validateForm = function(callback) {
 
         var result = {};
         result.errorMsg = errorMsg;
-        if( errorMsg )
-        {
-                result.valid = false;
-        }
-        else
-        {
-                result.valid = true;
-        }
 
-        if( callback )
-        {
-                callback(result);
-                return result.valid;
-        }
+        if( errorMsg ){ result.valid = false; }
+        else{ result.valid = true; }
 
         if( !result.valid )
         {
-                alert( errorMsg );
+                if( errorCallback ){ errorCallback(result); }
+                else { alert( errorMsg ); }
         }
-	
-	return result.valid;
+        else if( callback ) { callback(result); }
+        return result.valid;
 };
 	
 var $i = function( selector ){ return new Igniter( selector ) };
