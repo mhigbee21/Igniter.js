@@ -110,3 +110,12 @@ $i("#form1").validateForm(function(data){
       });
 
 ```
+
+## Authors
+
+* **Mark Higbee**  
+
+
+## License
+
+This project is licensed under the MIT License
