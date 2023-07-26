@@ -7,13 +7,13 @@ igniter.js gives you the power to get things done in a very small package... The
 
 <script>
 
-  Event listeners are simple replace click with the listener you need
+  Event listeners are simple. Replace click with the listener you need
   $i("#toggleBtn").listen("click", function(){    
       $i("#div").toggle();
   });
 
-You could use the method listen like the above example, clicks events are used so much, 
- I made an event listener just for click
+You could use the method listen like the above example, click events are used so much, 
+ I made an event listener just for it
 $i("#clearBtn").click( function(){     
     $i("#user-form").clearForm();
 });
