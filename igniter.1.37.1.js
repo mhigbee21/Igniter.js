@@ -5,8 +5,8 @@ AjaxClient.prototype.debug = false;
 
 AjaxClient.prototype.get = function( url, callback )
 {
-        var self = this;
-        var oReq = new XMLHttpRequest();
+        let self = this;
+        let oReq = new XMLHttpRequest();
         oReq.timeout = this.timeout;
         oReq.open("get", url, this.async );
        
@@ -26,8 +26,8 @@ AjaxClient.prototype.get = function( url, callback )
 
 AjaxClient.prototype.getJSON = function( url, callback )
 {
-        var self = this;
-        var oReq = new XMLHttpRequest();
+        let self = this;
+        let oReq = new XMLHttpRequest();
         oReq.timeout = this.timeout;
         oReq.open("get", url, this.async );
 
@@ -47,8 +47,8 @@ AjaxClient.prototype.getJSON = function( url, callback )
 
 AjaxClient.prototype.post = function( url, content, callback )
 {
-        var self = this;
-        var oReq = new XMLHttpRequest();
+        let self = this;
+        let oReq = new XMLHttpRequest();
         oReq.timeout = this.timeout;
         oReq.open("post", url, this.async );
 
@@ -82,16 +82,16 @@ Igniter.prototype.constructor = Igniter;
 
 Igniter.prototype.hide = function()
 {
-	var target = this.selector;
+	let target = this.selector;
 	
 	if( target.match(/^#/) )
         {
-                var element = document.querySelector(target);
+                let element = document.querySelector(target);
                 element.style.display = 'none';
                 return;
         }
 
-	var matches = document.querySelectorAll(target);
+	let matches = document.querySelectorAll(target);
 	
 	for(var i =0; i < matches.length; i++ )
 	{
@@ -101,16 +101,16 @@ Igniter.prototype.hide = function()
 
 Igniter.prototype.show = function()
 {
-	var target = this.selector;
+	let target = this.selector;
 
 	if( target.match(/^#/) )
 	{
-		var element = document.querySelector(target);
+		let element = document.querySelector(target);
 		element.style.display = 'inline';
 		return;
 	}
 
-        var matches = document.querySelectorAll(target);       
+        let matches = document.querySelectorAll(target);       
         for(var i =0; i < matches.length; i++ )
         {
                 matches[i].style.display = 'inline';
@@ -119,13 +119,13 @@ Igniter.prototype.show = function()
 
 Igniter.prototype.toggle = function()
 {      
-	var target = this.selector;
+	let target = this.selector;
  
         if( target.match(/^#/) )
         {       
-                var element = document.querySelector(target);
+                let element = document.querySelector(target);
                 
-		if( element.style.display == 'none' )
+		if( element.style.display == 'none' ||  element.style.display == '' )
 		{
 			 element.style.display = 'inline';
 		}
@@ -137,10 +137,10 @@ Igniter.prototype.toggle = function()
 		return;
         }
         
-        var matches = document.querySelectorAll(target);
-        for(var i =0; i < matches.length; i++ )
+        let matches = document.querySelectorAll(target);
+        for(let i =0; i < matches.length; i++ )
         {       
-		if( matches[i].style.display == 'none' )
+		if( matches[i].style.display == 'none' ||  element.style.display == '' )
                 {
                          matches[i].style.display  = 'inline';
                 }
@@ -153,16 +153,16 @@ Igniter.prototype.toggle = function()
 
 Igniter.prototype.css = function( prop, value )
 {	
-	var target = this.selector;
+	let target = this.selector;
 
         if( target.match(/^#/) )
         {
-                var element = document.querySelector(target);
+                let element = document.querySelector(target);
                 element.style.setProperty(prop, value);
                 return;
         }
 
-        var matches = document.querySelectorAll(target);
+        let matches = document.querySelectorAll(target);
         for(var i =0; i < matches.length; i++ )
         {
                 matches[i].style.setProperty(prop, value);
@@ -171,17 +171,17 @@ Igniter.prototype.css = function( prop, value )
 
 Igniter.prototype.attr = function( name, value )
 {
-	var target = this.selector;
+	let target = this.selector;
 	
 	if( target.match(/^#/) )
         {
-                var element = document.querySelector(target);
+                let element = document.querySelector(target);
                 element.setAttribute(name, value);
                 return;
         }
 
-        var matches = document.querySelectorAll(target);
-        for(var i =0; i < matches.length; i++ )
+        let matches = document.querySelectorAll(target);
+        for(let i =0; i < matches.length; i++ )
         {
                 matches[i].setAttribute(name, value);
         }
@@ -189,7 +189,7 @@ Igniter.prototype.attr = function( name, value )
 
 Igniter.prototype.html = function( html )
 {       
-        var target = this.selector;
+        let target = this.selector;
         
         if( target.match(/^#/) )
         {       
@@ -197,8 +197,8 @@ Igniter.prototype.html = function( html )
                 return;
         }
         
-        var matches = document.querySelectorAll(target);
-        for(var i =0; i < matches.length; i++ )
+        let matches = document.querySelectorAll(target);
+        for(let i =0; i < matches.length; i++ )
         {       
                 matches[i].innerHTML = html;
         }
@@ -206,7 +206,7 @@ Igniter.prototype.html = function( html )
 
 Igniter.prototype.append = function( html )
 {       
-        var target = this.selector;
+        let target = this.selector;
         
         if( target.match(/^#/) )
         {       
@@ -214,7 +214,7 @@ Igniter.prototype.append = function( html )
                 return;
         }
 
-        var matches = document.querySelectorAll(target);
+        let matches = document.querySelectorAll(target);
         for(var i =0; i < matches.length; i++ )
         {
                 matches[i].innerHTML += html;
@@ -223,7 +223,7 @@ Igniter.prototype.append = function( html )
 
 Igniter.prototype.click = function( callback )
 {
-	var target = this.selector;
+	let target = this.selector;
 
 	if( target.match(/^#/) )
         {
@@ -231,8 +231,8 @@ Igniter.prototype.click = function( callback )
                 return;
         }
 
-	var matches = document.querySelectorAll(target);
-        for(var i =0; i < matches.length; i++ )
+	let matches = document.querySelectorAll(target);
+        for(let i =0; i < matches.length; i++ )
         {
                 matches[i].addEventListener("click", callback);
         }
@@ -240,7 +240,7 @@ Igniter.prototype.click = function( callback )
 
 Igniter.prototype.listen = function( event, callback )
 {
-        var target = this.selector;
+        let target = this.selector;
 
         if( target.match(/^#/) )
         {
@@ -248,8 +248,8 @@ Igniter.prototype.listen = function( event, callback )
                 return;
         }
 
-        var matches = document.querySelectorAll(target);
-        for(var i =0; i < matches.length; i++ )
+        let matches = document.querySelectorAll(target);
+        for(let i =0; i < matches.length; i++ )
         {
                 matches[i].addEventListener(event, callback);
         }
@@ -257,13 +257,13 @@ Igniter.prototype.listen = function( event, callback )
 
 Igniter.prototype.renderTemplate = function ( templateid, hash )
 {
-    var template = document.getElementById(templateid);
-    var templateHtml = template.innerHTML;
+    let template = document.getElementById(templateid);
+    let templateHtml = template.innerHTML;
 
     for( var key in hash )
     {
-            var regex = '{{'+key+'}}';
-            var re = new RegExp(regex,"g");
+            let regex = '{{'+key+'}}';
+            let re = new RegExp(regex,"g");
             templateHtml = templateHtml.replace( re, hash[key]);
     }
 
@@ -274,18 +274,18 @@ Igniter.prototype.renderTemplate = function ( templateid, hash )
 // binds to elements with same id as name
 Igniter.prototype.dataBind = function ( data )
 {
-	var target = this.selector;
+	let target = this.selector;
 	if( !target ){ target = document; }
 	else{ target = document.querySelector(target); }	
 	
 	if( !target ){ target = document; }
 
-        for( var name in data )
+        for( let name in data )
         {
                 if( target.querySelector("#"+name).type === 'checkbox' )
                 {
-			var checkbox = target.querySelector("#"+name);
-                        var curr = checkbox.value;
+			let checkbox = target.querySelector("#"+name);
+                        let curr = checkbox.value;
 
                         if( curr == data[name] )
                         {
@@ -302,7 +302,7 @@ Igniter.prototype.dataBind = function ( data )
 
 Igniter.prototype.openWindow = function( WinName, width, height)
 {
-        var myWindow = window.open(WinName, 'newWin', 'resizable=yes ,scrollbars=no,status=0,width=' + width + ',height=' + height );
+        let myWindow = window.open(WinName, 'newWin', 'resizable=yes ,scrollbars=no,status=0,width=' + width + ',height=' + height );
         myWindow.focus();
 
         if (!myWindow.opener) myWindow.opener = "main";
@@ -314,8 +314,8 @@ Igniter.prototype.serialize = function( obj ) {
 
 Igniter.prototype.clearForm = function()
 {
-	var target = this.selector;
-	var frm = document.querySelector(target);
+	let target = this.selector;
+	let frm = document.querySelector(target);
 
         for (i = 0; i < frm.elements.length; i++)
         {
@@ -356,8 +356,8 @@ Igniter.prototype.clearForm = function()
 //
 Igniter.prototype.ajaxSubmit = function(callback) {
 
-	var target = this.selector;
-	var oFormElement;	
+	let target = this.selector;
+	let oFormElement;	
 
 	if( typeof target === 'string' )
 	{
@@ -369,7 +369,7 @@ Igniter.prototype.ajaxSubmit = function(callback) {
 	}
 
 if (oFormElement.action === undefined) { return; }
-  var oReq = new XMLHttpRequest();
+  let oReq = new XMLHttpRequest();
   oReq.onload = function()
         {
                 callback(oReq.responseText);
@@ -378,8 +378,8 @@ if (oFormElement.action === undefined) { return; }
     oReq.open("post", oFormElement.action);
     oReq.send(new FormData(oFormElement));
   } else {
-    var oField, sFieldType, nFile, sSearch = "";
-    for (var nItem = 0; nItem < oFormElement.elements.length; nItem++) {
+    let oField, sFieldType, nFile, sSearch = "";
+    for (let nItem = 0; nItem < oFormElement.elements.length; nItem++) {
       oField = oFormElement.elements[nItem];
       if (!oField.hasAttribute("name")) { continue; }
       sFieldType = oField.nodeName.toUpperCase() === "INPUT" ?
@@ -415,12 +415,11 @@ if (oFormElement.action === undefined) { return; }
 //----------------------------------------------------------------------------------------------
 Igniter.prototype.validateForm = function(callback, errorCallback) {
 
-        var target = this.selector;
-        var frm = document.querySelector(target);
+        let target = this.selector;
+        let frm = document.querySelector(target);
+        let errorMsg = '';
 
-        var errorMsg = '';
-
-        for (var i = 0; i < frm.elements.length; i++)
+        for (let i = 0; i < frm.elements.length; i++)
         {
                 if( frm.elements[i].dataset.required )
                 {
@@ -438,7 +437,7 @@ Igniter.prototype.validateForm = function(callback, errorCallback) {
                 }
         }
 
-        var result = {};
+        let result = {};
         result.errorMsg = errorMsg;
 
         if( errorMsg ){ result.valid = false; }
@@ -453,7 +452,7 @@ Igniter.prototype.validateForm = function(callback, errorCallback) {
         return result.valid;
 };
 	
-var $i = function( selector ){ return new Igniter( selector ) };
+let $i = function( selector ){ return new Igniter( selector ) };
 		
 // alias non selector calls so you don't have to call them with $i().get
 $i.get = function( url, callback ) { return $i().get( url, callback )};
